@@ -1,0 +1,41 @@
+@model List<BSUIR_Lychyts.UI.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Корзина";
+}
+
+<h1>Корзина</h1>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Калории</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DishName</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Calories* item.Quantity) ккал</td>
+                    <td>
+                        <a asp-action="Remove" asp-route-id="@item.DishId" class="btn btn-sm btn-danger">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Clear" class="btn btn-warning">Очистить корзину</a>
+}
+else
+{
+    <p>Корзина пуста</p>
+}
+
+<a asp-controller="Product" asp-action="Index" class="btn btn-primary">Продолжить покупки</a>

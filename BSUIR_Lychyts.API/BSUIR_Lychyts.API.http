@@ -1,0 +1,6 @@
+@BSUIR_Lychyts.API_HostAddress = http://localhost:5104
+
+GET {{BSUIR_Lychyts.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

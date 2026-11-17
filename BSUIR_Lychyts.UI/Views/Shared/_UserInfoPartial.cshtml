@@ -1,0 +1,26 @@
+<!-- Информация пользователя-->
+<a asp-controller="Cart" asp-action="Index" class="navbar-text ms-auto text-white text-decoration-none">
+    @await Component.InvokeAsync("Cart")
+</a>
+
+<div class="dropdown ms-4">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        User@gmail.com
+        <img src="/images/avatar.png" width="30" alt="User" class="rounded" />
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+        <li>
+            <span class="dropdown-item-text">
+                <img src="/images/avatar.png" width="50" alt="User" class="rounded" />
+                User@gmail.com
+            </span>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <form method="post" asp-controller="Account" asp-action="LogOut">
+                <button type="submit" class="nav-link btn btn-link text-dark px-3">Logout</button>
+            </form>
+        </li>
+    </ul>
+</div>
+<!-- Информация пользователя - конец-->

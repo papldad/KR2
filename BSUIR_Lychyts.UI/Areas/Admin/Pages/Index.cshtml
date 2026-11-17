@@ -1,0 +1,44 @@
+@page
+@model BSUIR_Lychyts.UI.Areas.Admin.Pages.Dishes.IndexModel
+
+@{
+    ViewData["Title"] = "Администрирование блюд";
+}
+
+<h1>Администрирование блюд</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Создать новое блюдо</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Изображение</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Калории</th>
+            <th>Категория</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Dishes.Items)
+        {
+            <tr>
+                <td>
+                    <img src="@item.Image" alt="@item.Name" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Calories</td>
+                <td>@item.Category?.Name</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Изменить</a>
+                    <a asp-page="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Детали</a>
+                    <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString()?.ToLower() ?? String.Empty;
+    var area = ViewContext.RouteData.Values["area"]?.ToString()?.ToLower() ?? String.Empty;
+}
+
+<!-- меню сайта-->
+<a asp-controller="Home" asp-action="Index" class="navbar-brand badge bg-secondary">СППР</a>
+<div class="navbar-nav">
+    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link @(controller == "home" && string.IsNullOrEmpty(area) ? "active" : "")">КР1</a>
+    <a asp-controller="Product" asp-action="Index" class="nav-item nav-link @(controller == "product" ? "active" : "")">Каталог</a>
+    <a asp-area="Admin" asp-page="/Index" class="nav-item nav-link @(area == "admin" ? "active" : "")">Администрирование</a>
+</div>
+<!-- меню сайта - конец-->
+
+<a asp-controller="Cart" asp-action="Index" class="nav-item nav-link @(controller == "cart" ? "active" : "")">
+    Корзина
+</a>
